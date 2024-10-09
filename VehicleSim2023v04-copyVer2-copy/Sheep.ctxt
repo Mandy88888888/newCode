@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Sheep
+comment0.text=\r\n\ A\ Pedestrian\ that\ tries\ to\ walk\ across\ the\ street\r\n
+comment1.params=direction
+comment1.target=Sheep(int)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Pedestrian\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ knockDown()
+comment3.text=\r\n\ Method\ to\ cause\ this\ Pedestrian\ to\ become\ knocked\ down\ -\ stop\ moving,\ turn\ onto\ side\r\n
+comment4.params=
+comment4.target=void\ healMe()
+comment4.text=\r\n\ Method\ to\ allow\ a\ downed\ Pedestrian\ to\ be\ healed\r\n
+comment5.params=
+comment5.target=boolean\ isAwake()
+numComments=6
