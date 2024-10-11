@@ -22,6 +22,7 @@ public abstract class Vehicle extends SuperSmoothMover
     private boolean switchingLane = false;
     private int switchLaneCounter = 0;
     protected abstract boolean checkHitPedestrian ();
+    private int switchLaneFactor;
     protected boolean checkHitWolf () {
         Wolf w =  (Wolf)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Wolf.class);
         if (w != null && !switchingLane) {
@@ -75,7 +76,16 @@ public abstract class Vehicle extends SuperSmoothMover
         }
     }
     public void switchLane () {
-        if (switchingLane) {}
+        switchingLane = true;
+        switchLaneFactor = 3;
+        switchLaneCounter = VehicleWorld.getLaneHeight()/switchLaneFactor;
+        if (myLaneNumber == 5) {
+            switchLaneFactor *= -1;
+        } else if (myLaneNumber != 0) {
+            if (Greenfoot.getRandomNumber(2) == 1) {
+                switchLaneFactor *= -1;
+            }
+        }
     }
 
     /**
@@ -86,6 +96,18 @@ public abstract class Vehicle extends SuperSmoothMover
      * - subclass' act() method can invoke super.act() to call this, as is demonstrated here.
      */
     public void act () {
+        // if the vehicle is already switiching lane, don't switch lane anymore
+        if (switchingLane) {
+            switchLaneCounter --;
+            setLocation (getX(), getY() + switchLaneFactor);
+            if (switchLaneCounter <= 0) {
+                switchingLane = false;
+            }
+        } else {
+            if (Math.round(Math.random() * 100) == 1) {
+            switchLane();
+        }
+        }
         if (hitPedestrian > 0) {
             hitPedestrian --;
             return;
@@ -113,9 +135,7 @@ public abstract class Vehicle extends SuperSmoothMover
         }
         
     }
-        public void switchLane() {
-        
-    }
+     
 
     /**
      * A method used by all Vehicles to check if they are at the edge.

@@ -45,14 +45,15 @@ public class VehicleWorld extends World
 
     
     // Instance variables / Objects
-    private boolean twoWayTraffic, splitAtCenter;
-    private static int laneHeight = 48, laneCount, spaceBetweenLanes;
-    private int[] lanePositionsY;
-    private VehicleSpawner[] laneSpawners;
-    private GreenfootSound sound = new GreenfootSound("sound.mp3");
+    protected boolean twoWayTraffic, splitAtCenter;
+    protected static int laneHeight = 48, laneCount, spaceBetweenLanes = 6;
+    protected int[] lanePositionsY;
+    protected VehicleSpawner[] laneSpawners;
+    protected GreenfootSound sound = new GreenfootSound("sound.mp3");
     public static int actCounter = 1;
     public static int sheepDeadCounter = 0;
-    private boolean nightMode = false;
+    protected abstract void spawn();
+ 
 
     /**
      * Constructor for objects of class MyWorld.
@@ -77,13 +78,11 @@ public class VehicleWorld extends World
 
         // set up background -- If you change this, make 100% sure
         // that your chosen image is the same size as the World
-        background = new GreenfootImage ("download.png");
-        setBackground (background);
+        
         
 
         // Set critical variables - will affect lane drawing
         laneCount = 6;
-        spaceBetweenLanes = 6;
         splitAtCenter = false;
         twoWayTraffic = false;
 
@@ -95,8 +94,9 @@ public class VehicleWorld extends World
 
         laneSpawners[0].setSpeedModifier(0.8);
         laneSpawners[3].setSpeedModifier(1.4);
+        setBackgroun("download.png");
 
-        setBackground (background);
+        Greenfoot.setWorld(new DayMode());
     }
 
     public void act () {
@@ -139,7 +139,7 @@ public class VehicleWorld extends World
         }
     }
     public static int getLaneHeight() {
-        return laneHeight;
+        return laneHeight + spaceBetweenLanes;
     }
 
     private void spawn () {
