@@ -93,7 +93,7 @@ public class VehicleWorld extends World
         laneSpawners = new VehicleSpawner[laneCount];
 
         // Prepare lanes method - draws the lanes
-        lanePositionsY = prepareLanes (this, background, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88));
+        lanePositionsY = prepareLanes (this, background, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88, 0));
 
         laneSpawners[0].setSpeedModifier(0.8);
         laneSpawners[3].setSpeedModifier(1.4);
@@ -142,12 +142,12 @@ public class VehicleWorld extends World
         
         if (nightMode){
             image = new GreenfootImage("download.png");
-            prepareLanes (this, image, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88));
+            prepareLanes (this, image, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88, 0));
             setBackground(image);
             nightMode = false;
         }else {
             image = new GreenfootImage("background2.png");
-           
+           prepareLanes (this, image, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88, 0));
             setBackground(image);
             nightMode = true;
         }

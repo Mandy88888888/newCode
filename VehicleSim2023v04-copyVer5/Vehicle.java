@@ -23,11 +23,13 @@ public abstract class Vehicle extends SuperSmoothMover
     private int switchLaneCounter = 0;
     protected abstract boolean checkHitPedestrian ();
     private int switchLaneFactor;
+    protected VehicleDetector u = new VehicleDetector(this, true);
+    protected VehicleDetector d = new VehicleDetector(this, false);
     protected boolean checkHitWolf () {
         Wolf w =  (Wolf)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Wolf.class);
         if (w != null && !switchingLane) {
             
-            getWorld().removeObject(w);
+            w.removeVehicle();
             return true;
             
         }
@@ -36,6 +38,25 @@ public abstract class Vehicle extends SuperSmoothMover
     public int getLaneNumber() {
         return myLaneNumber;
     }
+    /**
+     * This method adds detectors for the vehicle.
+     */
+    private void addDetectors () {
+        //if the vehicle is spawn in the first lane only spawn a lower vehicle
+        if (myLaneNumber == 0) {
+            getWorld().addObject(d, getX(), getY());
+        } 
+        //if the vehicle is spawn in the 5th lane only spawn an upper vehicle
+        else if (myLaneNumber == 5) {
+            getWorld().addObject(u, getX(), getY());
+        }
+        //if the vechile is spawn in one of the middle lanes, spawn both detectors
+        else {
+            getWorld().addObject(u, getX(), getY());
+            getWorld().addObject(d, getX(), getY());
+        }
+        
+    }
 
 
     public Vehicle (VehicleSpawner origin) {
@@ -43,6 +64,7 @@ public abstract class Vehicle extends SuperSmoothMover
         // about which lane I'm in and which direction I should face
         this.origin = origin;
         moving = true;
+        //inicialize the vehicle detectors
         
         // ask the Spawner that spawned me what my lane number is
         myLaneNumber = origin.getLaneNumber();
@@ -76,22 +98,26 @@ public abstract class Vehicle extends SuperSmoothMover
         if (isNew){
             setLocation (origin.getX() - (direction * 100), origin.getY() - yOffset);
             isNew = false;
+            addDetectors();
         }
     }
     public void switchLane () {
-        switchingLane = true;
-        switchLaneFactor = 3;
-        switchLaneCounter = VehicleWorld.getLaneHeight()/switchLaneFactor;
-        if (myLaneNumber == 5) {
-            switchLaneFactor *= -1;
+        if (!u.isDetected() && myLaneNumber != 5) {
+            switchingLane = true;
+            switchLaneFactor = 3;
+            switchLaneCounter = VehicleWorld.getLaneHeight()/switchLaneFactor;
+            myLaneNumber -= 1;
+            switchLaneFactor = -3;
+        } else if (!d.isDetected() && myLaneNumber != 0) {
+            switchingLane = true;
+            switchLaneFactor = 3;
+            switchLaneCounter = VehicleWorld.getLaneHeight()/switchLaneFactor;
             myLaneNumber += 1;
-        } else if (myLaneNumber != 0) {
-            if (Greenfoot.getRandomNumber(2) == 1) {
-                switchLaneFactor *= -1;
-                myLaneNumber -= 1;
-            }
         }
-    }
+        }
+        
+        
+    
 
     /**
      * The superclass Vehicle's act() method. This can be called by a Vehicle subclass object 
@@ -102,6 +128,7 @@ public abstract class Vehicle extends SuperSmoothMover
      */
     public void act () {
         // if the vehicle is already switiching lane, don't switch lane anymore
+ 
         if (switchingLane) {
             switchLaneCounter --;
             setLocation (getX(), getY() + switchLaneFactor);
@@ -109,7 +136,7 @@ public abstract class Vehicle extends SuperSmoothMover
                 switchingLane = false;
             }
         } else {
-            if (Math.round(Math.random() * 1000) == 1) {
+            if (Math.round(Math.random() * 100) == 1) {
             switchLane();
         }
         }
@@ -125,7 +152,7 @@ public abstract class Vehicle extends SuperSmoothMover
         }
 
         if (checkEdge()){
-            getWorld().removeObject(this);
+            removeVehicle();
             return;
         }
          if (checkHitWolf()) {
@@ -133,14 +160,21 @@ public abstract class Vehicle extends SuperSmoothMover
             Greenfoot.playSound("Explode.mp3");
             Animation explode = new Animation (100, "hit.png");
             getWorld().addObject(explode, getX() + 25, getY());
-            getWorld().removeObject(this);
+            removeVehicle();
             return;
         }
  
         }
         
     }
-     
+     /**
+      * method to remove vehicle and the spawner
+      */
+     public void removeVehicle () {
+         getWorld().removeObject(u);
+         getWorld().removeObject(d);
+         getWorld().removeObject(this);
+     }
 
     /**
      * A method used by all Vehicles to check if they are at the edge.
