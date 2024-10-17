@@ -34,10 +34,11 @@ public class Wolf extends Vehicle
         }
 
     }
-
+ 
     /**
      * When a Car hit's a Pedestrian, it should knock it over
      */
+
     public boolean checkHitPedestrian () {
         Sheep p = (Sheep)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Sheep.class);
         if (p != null && p.isAwake())

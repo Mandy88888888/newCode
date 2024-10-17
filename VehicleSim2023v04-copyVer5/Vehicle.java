@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * 
  */
 public abstract class Vehicle extends SuperSmoothMover
-{
+    {
     protected double maxSpeed;
     protected double speed;
     protected int direction; // 1 = right, -1 = left
@@ -25,16 +25,16 @@ public abstract class Vehicle extends SuperSmoothMover
     private int switchLaneFactor;
     protected VehicleDetector u = new VehicleDetector(this, true);
     protected VehicleDetector d = new VehicleDetector(this, false);
-    protected boolean checkHitWolf () {
-        Wolf w =  (Wolf)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Wolf.class);
-        if (w != null && !switchingLane) {
+    //protected boolean checkHitWolf () {
+    //    Wolf w =  (Wolf)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Wolf.class);
+     //   if (w != null && !switchingLane) {
             
-            w.removeVehicle();
-            return true;
+    //        w.removeVehicle();
+    //        return true;
             
-        }
-        return false;
-    }
+    //    }
+    //    return false;
+    //}
     public int getLaneNumber() {
         return myLaneNumber;
     }
@@ -81,6 +81,7 @@ public abstract class Vehicle extends SuperSmoothMover
         // accordingly. If speed modifiers are not set, this multiplies by 1.0 (as in,
         // does nothing).
         maxSpeed *= origin.getSpeedModifier();
+        maxSpeed += Math.random();
         speed = maxSpeed;
         
         isNew = true; // this boolean serves to make sure this Vehicle is only placed in 
@@ -102,13 +103,13 @@ public abstract class Vehicle extends SuperSmoothMover
         }
     }
     public void switchLane () {
-        if (!u.isDetected() && myLaneNumber != 5) {
+        if (!u.isDetected() && myLaneNumber != 0) {
             switchingLane = true;
             switchLaneFactor = 3;
             switchLaneCounter = VehicleWorld.getLaneHeight()/switchLaneFactor;
             myLaneNumber -= 1;
             switchLaneFactor = -3;
-        } else if (!d.isDetected() && myLaneNumber != 0) {
+        } else if (!d.isDetected() && myLaneNumber != 5) {
             switchingLane = true;
             switchLaneFactor = 3;
             switchLaneCounter = VehicleWorld.getLaneHeight()/switchLaneFactor;
@@ -136,7 +137,7 @@ public abstract class Vehicle extends SuperSmoothMover
                 switchingLane = false;
             }
         } else {
-            if (Math.round(Math.random() * 100) == 1) {
+            if (Math.round(Math.random() * 1000) == 1) {
             switchLane();
         }
         }
@@ -150,11 +151,16 @@ public abstract class Vehicle extends SuperSmoothMover
         } else {
             hitPedestrian = counter;
         }
+        if (checkTouchVehicle()) {
+            if (Math.round(Math.random() * 50) == 1) {
+            switchLane();
+        }
 
         if (checkEdge()){
             removeVehicle();
             return;
         }
+        /**
          if (checkHitWolf()) {
             this.speed = 0;
             Greenfoot.playSound("Explode.mp3");
@@ -163,9 +169,19 @@ public abstract class Vehicle extends SuperSmoothMover
             removeVehicle();
             return;
         }
+        */
  
         }
         
+    }
+}
+    private boolean checkTouchVehicle () {
+        Sheep p = (Sheep)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Sheep.class);
+        if (p != null && p.isAwake())
+        {
+            return true;
+        }
+        return false;
     }
      /**
       * method to remove vehicle and the spawner

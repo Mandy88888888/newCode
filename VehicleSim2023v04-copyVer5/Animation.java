@@ -21,8 +21,7 @@ public class Animation extends SuperSmoothMover
         image = new GreenfootImage (s);
         image.scale((int)(image.getWidth()*1.0/3.0), (int)(image.getHeight()*1.0/3.0));
     }
-
-
+    
     public void act()
     {
         setImage(this.image);
