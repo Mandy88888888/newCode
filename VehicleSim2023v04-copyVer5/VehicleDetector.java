@@ -16,7 +16,7 @@ public class VehicleDetector extends Actor
      * Act - do whatever the VehicleDetector wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public VehicleDetector (Vehicle v,boolean upper) {
+    public VehicleDetector (Vehicle v,boolean upper ) {
         vehicle = v;
         this.upper = upper;
         image =  new GreenfootImage(v.getImage().getWidth(), v.getImage().getHeight());

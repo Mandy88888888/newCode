@@ -39,14 +39,15 @@ public abstract class Sheep extends SuperSmoothMover
             if (getOneObjectAtOffset(0, (int)(direction * getImage().getHeight()/2 + (int)(direction * speed)), Vehicle.class) == null){
                 setLocation (getX(), getY() + (speed*direction));
             }
+            //if I am avoiding the wolf, use the avoid wolf method
+            if (avoidingWolf) {
+                avoidWolf();
+            }
             //check if I reached the edge of the world - if I did, remove me
             if (direction == -1 && getY() < 325){
                 getWorld().removeObject(this);
             } else if (direction == 1 && getY() > getWorld().getHeight() - 30){
                 getWorld().removeObject(this);
-            }
-            if (avoidingWolf) {
-                avoidWolf();
             }
 
         }else {
@@ -62,9 +63,9 @@ public abstract class Sheep extends SuperSmoothMover
     }
     public void avoidWolf() {
         if (!avoided) {
-            List<Wolf> w = new ArrayList<>();
-            w = (List<Wolf>) getObjectsInRange(40, Wolf.class);
-            if (!w.isEmpty()) {
+            Wolf w;
+            w = (Wolf) getOneObjectAtOffset(getX(), direction * (int) (speed + getImage().getHeight()/2), Wolf.class);
+            if (w != null) {
                 sheepChangeDirection();
                 avoided = true;
             }

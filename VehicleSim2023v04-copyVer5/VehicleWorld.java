@@ -34,7 +34,7 @@ public class VehicleWorld extends World
     //public static Color GREY_STREET = new Color (88, 88, 88);
     public static Color YELLOW_LINE = new Color (255, 216, 0);
 
-    public static boolean SHOW_SPAWNERS = false;
+    public static boolean SHOW_SPAWNERS = true;
     public static boolean noEvent = true;
 
     // Set Y Positions for Pedestrians to spawn
@@ -93,10 +93,7 @@ public class VehicleWorld extends World
         laneSpawners = new VehicleSpawner[laneCount];
 
         // Prepare lanes method - draws the lanes
-        lanePositionsY = prepareLanes (this, background, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88, 0));
-
-        laneSpawners[0].setSpeedModifier(0.8);
-        laneSpawners[3].setSpeedModifier(1.4);
+        background = prepareLanes (background, 400-20,spaceBetweenLanes);
 
         setBackground (background);
          spawnButton = new TextButton ("Avoid Wolf", 24);
@@ -142,12 +139,12 @@ public class VehicleWorld extends World
         
         if (nightMode){
             image = new GreenfootImage("download.png");
-            prepareLanes (this, image, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88, 0));
+            image = prepareLanes (image, laneHeight,spaceBetweenLanes);
             setBackground(image);
             nightMode = false;
         }else {
             image = new GreenfootImage("background2.png");
-           prepareLanes (this, image, laneSpawners, 400-20, laneHeight, laneCount, spaceBetweenLanes, twoWayTraffic, splitAtCenter, new Color (88, 88, 88, 0));
+          image = prepareLanes (image, laneHeight,spaceBetweenLanes);
             setBackground(image);
             nightMode = true;
         }
@@ -274,66 +271,36 @@ public class VehicleWorld extends World
      * Draw the lanes on the background
      */
 
-    public static int[] prepareLanes (World world, GreenfootImage target, VehicleSpawner[] spawners, int startY, int heightPerLane, int lanes, int spacing, boolean twoWay, boolean centreSplit, int centreSpacing, Color GREY_STREET)
+    public static GreenfootImage prepareLaness (GreenfootImage image, GreenfootImage drawing, int startY, int spaces, int numberOflanes, World world)
     {
-        // Declare an array to store the y values as I calculate them
-        int[] lanePositions = new int[lanes];
-        // Pre-calculate half of the lane height, as this will frequently be used for drawing.
-        // To help make it clear, the heightOffset is the distance from the centre of the lane (it's y position)
-        // to the outer edge of the lane.
-        int heightOffset = heightPerLane / 2;
-        // draw top border
-        target.setColor (GREY_BORDER);
-        target.fillRect (0, startY, target.getWidth(), spacing);
+        //stores the positions of all the lanes
+       int[] lanePositions = new int[numberOflanes];
+       VehicleSpawner[] spawners = new VehicleSpawner[numberOflanes];
+       return image;
+       for (int i = 0; i < numberOflanes; i ++){
+           //calculate the lane position
+           lanePositions[i] = startY + spaces + (i * (laneHeight+spaces));
 
-        // Main Loop to Calculate Positions and draw lanes
-        for (int i = 0; i < lanes; i++){
-            // calculate the position for the lane
-            lanePositions[i] = startY + spacing + (i * (heightPerLane+spacing)) + heightOffset ;
-
-            // draw lane
-            target.setColor(GREY_STREET); 
-            // the lane body
-            target.fillRect (0, lanePositions[i] - heightOffset, target.getWidth(), heightPerLane);
-            // the lane spacing - where the white or yellow lines will get drawn
-            target.fillRect(0, lanePositions[i] + heightOffset, target.getWidth(), spacing);
-
-            // Place spawners and draw lines depending on whether its 2 way and centre split
-            if (twoWay && centreSplit){
-                // first half of the lanes go rightward (no option for left-hand drive, sorry UK students .. ?)
-                if ( i < lanes / 2){
-                    spawners[i] = new VehicleSpawner(false, heightPerLane, i);
-                    world.addObject(spawners[i], target.getWidth(), lanePositions[i]);
-                } else { // second half of the lanes go leftward
-                    spawners[i] = new VehicleSpawner(true, heightPerLane, i);
-                    world.addObject(spawners[i], 0, lanePositions[i]);
-                }
-
-                // draw yellow lines if middle 
-                if (i == lanes / 2){
-                    target.setColor(YELLOW_LINE);
-                    target.fillRect(0, lanePositions[i] - heightOffset - spacing, target.getWidth(), spacing);
-
-                } else if (i > 0){ // draw white lines if not first lane
-                    for (int j = 0; j < target.getWidth(); j += 120){
+           //draw the road
+           image.drawImage​(drawing, 0, startY);
+           //inicialize and set up the spawners
+           spawners[i] = new VehicleSpawner(true, laneHeight, i);
+           //add the object to the world
+           world.addObject(spawners[i], 0, lanePositions[i]);
+           
+           if (i > 0){
+                    for (int j = 0; j < image.getWidth(); j += 120){
                         target.setColor (Color.WHITE);
                         target.fillRect (j, lanePositions[i] - heightOffset - spacing, 60, spacing);
                     }
-                } 
-
-            } else if (twoWay){ // not center split
-                if ( i % 2 == 0){
-                    spawners[i] = new VehicleSpawner(false, heightPerLane, i);
-                    world.addObject(spawners[i], target.getWidth(), lanePositions[i]);
-                } else {
-                    spawners[i] = new VehicleSpawner(true, heightPerLane, i);
-                    world.addObject(spawners[i], 0, lanePositions[i]);
                 }
+                
 
-                // draw Grey Border if between two "Streets"
-                if (i > 0){ // but not in first position
+            }
+            //the dotted lines
+            if (i > 0){ // but not in first position
                     if (i % 2 == 0){
-                        target.setColor(GREY_BORDER);
+                        imag.setColor(GREY_BORDER);
                         target.fillRect(0, lanePositions[i] - heightOffset - spacing, target.getWidth(), spacing);
 
                     } else { // draw dotted lines
@@ -343,23 +310,8 @@ public class VehicleWorld extends World
                         }
                     } 
                 }
-            } else { // One way traffic
-                spawners[i] = new VehicleSpawner(true, heightPerLane, i);
-                world.addObject(spawners[i], 0, lanePositions[i]);
-                if (i > 0){
-                    for (int j = 0; j < target.getWidth(); j += 120){
-                        target.setColor (Color.WHITE);
-                        target.fillRect (j, lanePositions[i] - heightOffset - spacing, 60, spacing);
-                    }
-                }
-            }
-        }
-        // draws bottom border
-        target.setColor (GREY_BORDER);
-        target.fillRect (0, lanePositions[lanes-1] + heightOffset, target.getWidth(), spacing);
-
-        return lanePositions;
-    }
+       }
+    
 
     /**
      * A z-sort method which will sort Actors so that Actors that are
@@ -429,8 +381,8 @@ public class VehicleWorld extends World
      * @param centreSplit   Should the whole road be split in the middle? Or lots of parallel two-way streets? Must also be two-way street (twoWay == true) or else NO EFFECT
      * 
      */
-    public static int[] prepareLanes (World world, GreenfootImage target, VehicleSpawner[] spawners, int startY, int heightPerLane, int lanes, int spacing, boolean twoWay, boolean centreSplit, Color color){
-        return prepareLanes (world, target, spawners, startY, heightPerLane, lanes, spacing, twoWay, centreSplit, spacing, color);
+    public static GreenfootImage prepareLanes (GreenfootImage target, int startY, int spacing){
+        return prepareLanes (target, new GreenfootImage("DayRoad.png"), startY, spacing);
     }
 
 }

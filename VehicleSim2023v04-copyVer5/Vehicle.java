@@ -152,7 +152,6 @@ public abstract class Vehicle extends SuperSmoothMover
             hitPedestrian = counter;
         }
         if (checkTouchVehicle()) {
-            if (Math.round(Math.random() * 50) == 1) {
             switchLane();
         }
 
@@ -171,13 +170,13 @@ public abstract class Vehicle extends SuperSmoothMover
         }
         */
  
-        }
+        
         
     }
 }
     private boolean checkTouchVehicle () {
-        Sheep p = (Sheep)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Sheep.class);
-        if (p != null && p.isAwake())
+        Vehicle v = (Vehicle)getOneObjectAtOffset((int)speed + getImage().getWidth()/2, 0, Vehicle.class);
+        if (v != null)
         {
             return true;
         }
