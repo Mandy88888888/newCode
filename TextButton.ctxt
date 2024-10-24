@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=TextButton
+comment0.text=\r\n\ A\ Generic\ Button\ to\ display\ text\ that\ is\ clickable.\r\n\ This\ button\ can\ be\ added\ to\ and\ controlled\ by\ a\ world.\r\n\ \r\n\ @author\ Mandy\ Yuan\r\n\ @version\ Oct\ 20,\ 2024\r\n
+comment1.params=text
+comment1.target=TextButton(java.lang.String)
+comment1.text=\r\n\ Construct\ a\ TextButton\ given\ only\ a\ String.\r\n\ This\ constructor\ sets\ a\ default\ text\ size\ of\ 20.\r\n\ \r\n\ @param\ text\ The\ String\ to\ be\ displayed\ on\ the\ button\r\n
+comment2.params=text\ textSize
+comment2.target=TextButton(java.lang.String,\ int)
+comment2.text=\r\n\ Construct\ a\ TextButton\ given\ a\ String\ and\ a\ text\ size.\r\n\ \r\n\ @param\ text\ The\ String\ to\ be\ displayed\ on\ the\ button\r\n\ @param\ textSize\ The\ size\ of\ the\ text\ to\ be\ displayed\ on\ the\ button\r\n
+comment3.params=
+comment3.target=void\ act()
+comment4.params=text
+comment4.target=void\ updateMe(java.lang.String)
+comment4.text=\r\n\ Update\ the\ current\ TextButton\ text\ and\ its\ appearance.\r\n\ This\ method\ modifies\ the\ button's\ text\ and\ redraws\ both\ the\ normal\ and\ \r\n\ alternative\ button\ images.\r\n\ \r\n\ @param\ text\ The\ new\ text\ to\ be\ displayed\ on\ the\ button\r\n
+numComments=5

@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=VehicleDetector
+comment0.text=\r\n\ The\ VehicleDetector\ class\ detects\ vehicles\ in\ the\ vicinity\ of\ a\ given\ vehicle.\r\n\ It\ is\ used\ to\ determine\ if\ there\ are\ other\ vehicles\ in\ the\ detector's\ path,\r\n\ helping\ to\ manage\ vehicle\ movements\ and\ interactions.\r\n\ \r\n\ @author\ Mandy\ Yuan\r\n\ @version\ Oct\ 17,\ 2024\r\n
+comment1.params=v\ upper
+comment1.target=VehicleDetector(Vehicle,\ boolean)
+comment1.text=\r\n\ Constructor\ for\ the\ VehicleDetector\ class.\r\n\ Initializes\ the\ detector\ with\ a\ reference\ to\ a\ Vehicle\ and\ its\ position\r\n\ (upper\ or\ lower\ relative\ to\ the\ vehicle).\r\n\ \r\n\ @param\ v\ The\ Vehicle\ that\ this\ detector\ is\ associated\ with\r\n\ @param\ upper\ True\ if\ this\ is\ the\ upper\ detector,\ false\ if\ lower\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ method\ for\ the\ VehicleDetector.\ This\ method\ is\ called\ whenever\ the\ \r\n\ 'Act'\ or\ 'Run'\ button\ is\ pressed\ in\ the\ environment.\ It\ handles\ detection\ \r\n\ and\ updates\ the\ detector's\ location.\r\n
+comment3.params=
+comment3.target=void\ detect()
+comment3.text=\r\n\ Detects\ if\ a\ SuperSmoothMover\ (another\ vehicle)\ is\ present\ in\ front\ of\ the\ detector.\r\n\ Updates\ the\ detected\ status\ based\ on\ whether\ another\ vehicle\ is\ found.\r\n
+comment4.params=
+comment4.target=boolean\ isDetected()
+comment4.text=\r\n\ Returns\ the\ detection\ status\ of\ the\ detector.\r\n\ \r\n\ @return\ True\ if\ a\ vehicle\ is\ detected;\ false\ otherwise\r\n
+comment5.params=
+comment5.target=void\ updateLocation()
+comment5.text=\r\n\ Updates\ the\ location\ of\ the\ detector\ based\ on\ the\ associated\ vehicle's\ position.\r\n\ If\ the\ vehicle\ no\ longer\ exists,\ removes\ the\ detector\ from\ the\ world.\r\n
+numComments=6

@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=SmartSheep
+comment0.text=\r\n\ The\ SmartSheep\ class\ represents\ a\ type\ of\ sheep\ that\ can\ move\ intelligently\ \r\n\ within\ the\ simulation.\ It\ inherits\ from\ the\ Sheep\ class\ and\ can\ have\ \r\n\ additional\ behaviors\ or\ properties\ specific\ to\ smart\ sheep.\r\n\ \r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=direction
+comment1.target=SmartSheep(int)
+comment1.text=\r\n\ Constructor\ for\ the\ SmartSheep\ class.\ Initializes\ the\ sheep's\ direction,\r\n\ maximum\ speed,\ image,\ and\ health\ (blood).\r\n\ \r\n\ @param\ direction\ The\ initial\ direction\ for\ the\ sheep\ to\ move.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ method\ for\ the\ SmartSheep.\ This\ method\ is\ called\ whenever\ the\ \r\n\ 'Act'\ or\ 'Run'\ button\ is\ pressed\ in\ the\ environment.\ It\ allows\ \r\n\ the\ SmartSheep\ to\ perform\ actions\ each\ turn.\r\n
+numComments=3

@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=RedWolf
+comment0.text=\r\n\ The\ RedWolf\ class\ represents\ a\ type\ of\ sheep\ who\ comes\ out\ and\ hits\ the\ Wolf\r\n\ during\ "red\ mode"\r\n\ \r\n\ @author\ Mandy\ Yuan\r\n\ @version\ Oct\ 19,\ 2024\r\n
+comment1.params=direction
+comment1.target=RedWolf(int)
+comment1.text=\r\n\ Constructor\ for\ the\ RedWolf\ class.\ Initializes\ the\ RedWolf\ with\ a\r\n\ specified\ direction\ and\ sets\ its\ properties\ such\ as\ speed,\ appearance,\r\n\ and\ health.\r\n\ \r\n\ @param\ direction\r\n\ \ \ \ \ \ \ \ \ \ \ \ The\ initial\ direction\ the\ RedWolf\ will\ move\ in.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ defines\ the\ actions\ that\ the\ RedWolf\ will\ perform\ during\ each\ game\r\n\ iteration.\ This\ method\ is\ called\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ is\r\n\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=void\ checkTouchWolf()
+numComments=4

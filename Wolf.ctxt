@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.target=Wolf
+comment0.text=\r\n\ The\ Wolf\ class\ is\ a\ subclass\ of\ Vehicle\ that\ represents\ a\ wolf\ in\ the\ game.\r\n\ It\ has\ the\ ability\ to\ \r\n\ \ \ \ \ -\ knowck\ down\ sheeps\r\n\ \ \ \ \ -\ get\ hit\ by\ red\ wolf\r\n
+comment1.params=origin\ world
+comment1.target=Wolf(VehicleSpawner,\ VehicleWorld)
+comment1.text=\r\n\ Constructor\ for\ the\ Wolf\ class.\r\n\ Initializes\ the\ wolf's\ image,\ speed,\ and\ following\ distance.\r\n\ \r\n\ @param\ origin\ The\ VehicleSpawner\ from\ which\ this\ Wolf\ originates.\r\n\ @param\ world\ The\ VehicleWorld\ in\ which\ this\ Wolf\ exists.\r\n
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=boolean\ checkHitPedestrian()
+comment3.text=\r\n\ Checks\ if\ the\ Wolf\ has\ hit\ a\ Sheep.\r\n\ If\ a\ hit\ occurs,\ the\ Sheep\ loses\ blood\ and\ sound\ effects\ are\ played.\r\n\ \r\n\ @return\ true\ if\ a\ Sheep\ was\ hit,\ false\ otherwise.\r\n
+comment4.params=
+comment4.target=void\ getHit()
+comment4.text=\r\n\ Handles\ the\ logic\ for\ when\ the\ Wolf\ gets\ hit.\r\n\ Plays\ an\ explosion\ sound,\ creates\ an\ animation,\ and\ removes\ the\ Wolf\ from\ the\ world.\r\n
+comment5.params=
+comment5.target=boolean\ checkHitRedWolf()
+comment5.text=\r\n\ Checks\ if\ the\ Wolf\ has\ collided\ with\ a\ RedWolf.\r\n\ If\ a\ collision\ occurs,\ the\ Wolf\ is\ removed\ from\ the\ world.\r\n\ \r\n\ @return\ true\ if\ a\ RedWolf\ was\ hit,\ false\ otherwise.\r\n
+numComments=6

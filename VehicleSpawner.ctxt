@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.target=VehicleSpawner
+comment0.text=\r\n\ A\ Spawner\ object\ is\ a\ place\ where\ a\ Vehicle\ can\ spawn.\ Each\ spawner\ is\ able\r\n\ to\ check\ if\ there\ is\ already\ a\ Vehicle\ in\ the\ spot\ to\ avoid\ spawning\ multiple\r\n\ Vehicles\ on\ top\ of\ each\ other.\r\n\ \r\n\ These\ can\ be\ shown\ in\ order\ to\ help\ understand\ and\ build\ the\ simulation,\ but\r\n\ should\ be\ hidden\ when\ your\ project\ is\ complete.\r\n\ \r\n\ @author\ Mr.\ Chohen\r\n
+comment1.params=rightward\ laneHeight\ laneNumber
+comment1.target=VehicleSpawner(boolean,\ int,\ int)
+comment1.text=\r\n\ Constructor\ for\ the\ VehicleSpawner\ class.\ Initializes\ the\ spawner\ with\ its\ \r\n\ lane\ number,\ direction,\ and\ dimensions\ based\ on\ the\ provided\ lane\ height.\r\n\ \r\n\ @param\ rightward\ \ \ Indicates\ if\ the\ spawner\ faces\ rightward.\r\n\ @param\ laneHeight\ \ The\ height\ of\ the\ lane,\ used\ to\ set\ the\ spawner's\ height.\r\n\ @param\ laneNumber\ \ The\ lane\ number\ this\ spawner\ will\ represent.\r\n
+comment2.params=
+comment2.target=boolean\ facesRightward()
+comment2.text=\r\n\ Checks\ if\ the\ spawner\ faces\ rightward.\r\n\ \r\n\ @return\ true\ if\ the\ spawner\ faces\ rightward,\ false\ otherwise.\r\n
+comment3.params=
+comment3.target=boolean\ isTouchingVehicleOld()
+comment3.text=\r\n\ Checks\ if\ the\ spawner\ is\ currently\ touching\ any\ vehicle.\r\n\ \r\n\ @return\ true\ if\ a\ vehicle\ is\ touching\ the\ spawner,\ false\ otherwise.\r\n
+comment4.params=
+comment4.target=boolean\ isTouchingVehicle()
+comment4.text=\r\n\ Checks\ if\ the\ spawner\ is\ currently\ touching\ any\ vehicle.\r\n\ \r\n\ @return\ true\ if\ a\ vehicle\ is\ touching\ the\ spawner,\ false\ otherwise.\r\n
+comment5.params=
+comment5.target=int\ getLaneNumber()
+comment5.text=\r\n\ \r\n\ Get\ the\ lane\ number\ (0\ indexed)\ that\ this\ VehicleSpawner\ represents.\ This\r\n\ can\ be\ used\ by\ the\ Vehicle\ to\ figure\ out\ where\ it\ is,\ and\ when\ faced\ with\r\n\ the\ lane\ change\ algorithm\ task,\ which\ lanes\ it\ can\ move\ into.\r\n\ \r\n\ @return\ int\ The\ lane\ number\ in\ a\ 0-indexed\ format.\r\n
+numComments=6

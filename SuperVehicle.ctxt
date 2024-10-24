@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=SuperVehicle
+comment0.text=\r\n\ The\ SuperVehicle\ subclass\ represents\ a\ special\ type\ of\ vehicle\ in\ the\ game.\r\n\ It\ inherits\ from\ the\ Vehicle\ class\ and\ includes\ unique\ behaviors\ and\ attributes.\r\n\ It\ is\ spawn\ when\ there\ are\ a\ certain\ number\ of\ sheep\ in\ the\ world\ and\ re-spawn\ all\ the\ sheep\r\n\ \r\n\ @author\ Mandy\ Yuan\r\n\ @version\ Oct\ 14,\ 2024\r\n
+comment1.params=origin\ world
+comment1.target=SuperVehicle(VehicleSpawner,\ VehicleWorld)
+comment1.text=\r\n\ Constructor\ for\ the\ SuperVehicle\ class.\ Initializes\ the\ vehicle's\ properties\r\n\ and\ sets\ its\ image.\r\n\ \r\n\ @param\ origin\ The\ VehicleSpawner\ that\ spawned\ this\ vehicle\r\n\ @param\ world\ The\ VehicleWorld\ where\ this\ vehicle\ exists,\ allow\ access\ to\ method\ in\ VehicleWorld\ class\r\n
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ method\ for\ the\ SuperVehicle.\ This\ method\ is\ called\ whenever\ the\ 'Act'\r\n\ or\ 'Run'\ button\ is\ pressed\ in\ the\ environment.\ It\ contains\ the\ main\ logic\ \r\n\ for\ the\ vehicle's\ actions\ each\ frame.\r\n\ \r\n\ @Override\r\n
+comment3.params=
+comment3.target=boolean\ checkHitPedestrian()
+comment3.text=\r\n\ Checks\ if\ the\ SuperVehicle\ has\ hit\ a\ pedestrian.\r\n\ If\ a\ pedestrian\ is\ detected\ and\ is\ not\ awake,\ it\ heals\ the\ pedestrian\r\n\ and\ updates\ the\ sheepDeadCounter.\r\n\ \r\n\ @return\ true\ if\ a\ pedestrian\ was\ hit;\ false\ otherwise\r\n
+numComments=4

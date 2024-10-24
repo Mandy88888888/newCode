@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=PrettySheep
+comment0.text=\r\n\ The\ PrettySheep\ class\ represents\ a\ type\ of\ sheep\ with\ a\ specific\ appearance\r\n\ \t\t-comes\ out\ both\ day\ and\ night\r\n\ \t\t-only\ 1\ blood\r\n\ \t\t-speed\ is\ 2.5\r\n\ \r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=direction
+comment1.target=PrettySheep(int)
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ PrettySheep\ wants\ to\ do.\ This\ method\ is\ called\r\n\ whenever\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=
+comment2.target=void\ act()
+numComments=3

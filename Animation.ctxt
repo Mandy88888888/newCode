@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Animation
+comment0.text=\r\n\ The\ Animation\ class\ is\ used\ to\ display\ an\ animated\ image\ on\ the\ screen\ for\ a\ \r\n\ specified\ duration\ before\ it\ is\ removed\ from\ the\ world.\ \r\n\ This\ class\ extends\ SuperSmoothMover\ to\ inherit\ movement\ capabilities.\r\n\ \r\n\ @author\ Mandy\ Yuan\r\n
+comment1.params=time\ s
+comment1.target=Animation(int,\ java.lang.String)
+comment1.text=\r\n\ Constructor\ for\ the\ Animation\ class.\ Initializes\ the\ animation\ with\ a\ \r\n\ specified\ duration\ and\ the\ image\ file\ to\ display.\r\n\ \r\n\ @param\ time\ The\ number\ of\ act\ cycles\ the\ animation\ should\ last.\r\n\ @param\ s\ The\ filename\ of\ the\ image\ to\ be\ displayed\ for\ the\ animation.\r\n
+comment2.params=
+comment2.target=void\ act()
+numComments=3
